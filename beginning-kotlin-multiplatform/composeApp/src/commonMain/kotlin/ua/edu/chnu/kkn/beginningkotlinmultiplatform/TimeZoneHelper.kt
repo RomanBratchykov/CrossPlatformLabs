@@ -1,4 +1,4 @@
-package ua.edu.chnu.kkn.beginningkotlinmultiplatform
+package ua.edu.chnu.kkn.beginningkotlinmultiplatform.data.timezones
 
 interface TimeZoneHelper {
     fun getTimeZoneStrings(): List<String>
