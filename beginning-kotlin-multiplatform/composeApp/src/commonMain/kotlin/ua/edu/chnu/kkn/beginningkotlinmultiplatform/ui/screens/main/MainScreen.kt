@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import beginningkotlinmultiplatform.composeapp.generated.resources.Res
 import beginningkotlinmultiplatform.composeapp.generated.resources.buttons
 import org.jetbrains.compose.resources.stringResource
-
+import beginningkotlinmultiplatform.composeapp.generated.resources.checkboxes
 @Composable
 fun MainScreen(
     onButtonsClicked: () -> Unit,
@@ -32,11 +32,21 @@ fun MainScreen(
         ) {
             Text(stringResource(Res.string.buttons))
         }
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onCheckboxesClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.checkboxes))
+        }
     }
 }
 
 @Preview
 @Composable
 private fun MainScreenPreview() {
-    MainScreen {}
+    MainScreen(
+        {},
+        ) {}
 }

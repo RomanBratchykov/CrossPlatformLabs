@@ -10,10 +10,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,11 +26,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import beginningkotlinmultiplatform.composeapp.generated.resources.*
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.buttons.ButtonsScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.main.MainScreen
-
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.checkboxes.CheckboxesScreen
 enum class AppScreen(val title: StringResource) {
     Main(title = Res.string.main), Buttons(title = Res.string.buttons), Checkboxes(title = Res.string.checkboxes),
 }
@@ -61,13 +67,20 @@ fun AppNavigation() {
         backStackEntry?.destination?.route ?: AppScreen.Main.name
     )
 
+    val scope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+
     Scaffold(
         topBar = {
             AppBar(
                 currentScreen = currentScreen,
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp() })
-        }) { innerPadding ->
+        },
+        snackbarHost = {
+            SnackbarHost(hostState = snackbarHostState)
+        },
+    ) { innerPadding ->
 
         NavHost(
             navController = navController,
@@ -78,11 +91,26 @@ fun AppNavigation() {
                 .padding(innerPadding)
         ) {
             composable(route = AppScreen.Main.name) {
-                MainScreen {
-                    navController.navigate(AppScreen.Buttons.name)
-                } }
+                MainScreen(
+                    onButtonsClicked = {navController.navigate(AppScreen.Buttons.name)},
+                    onCheckboxesClicked = {navController.navigate(AppScreen.Checkboxes.name)},
+                )
+            }
             composable(route = AppScreen.Buttons.name) {
-                ButtonsScreen()
+                ButtonsScreen(
+                    onFilledButtonClicked = { text ->
+                        scope.launch {
+                            snackbarHostState
+                                .showSnackbar(
+                                    message = text,
+                                    duration = SnackbarDuration.Short
+                                )
+                        }
+                    }
+                )
+            }
+            composable(route = AppScreen.Checkboxes.name) {
+                CheckboxesScreen()
             }
         }
     }
