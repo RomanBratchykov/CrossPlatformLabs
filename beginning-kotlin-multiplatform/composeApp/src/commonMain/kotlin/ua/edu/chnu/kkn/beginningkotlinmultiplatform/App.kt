@@ -18,9 +18,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
-
+import beginningkotlinmultiplatform.composeapp.generated.resources.aclonica_regular
 import beginningkotlinmultiplatform.composeapp.generated.resources.Res
-import beginningkotlinmultiplatform.composeapp.generated.resources.audiowide_regular
 import beginningkotlinmultiplatform.composeapp.generated.resources.compose_multiplatform
 import co.touchlab.kermit.Logger
 import org.jetbrains.compose.resources.Font
@@ -56,7 +55,7 @@ fun App() {
                         style = TextStyle(
                             fontSize = 28.sp,
                             fontFamily = FontFamily(
-                                Font(Res.font.audiowide_regular)
+                                Font(Res.font.aclonica_regular)
                             ),
                         )
                     )
