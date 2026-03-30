@@ -2,5 +2,12 @@
     <string name="main">Main</string>
     <string name="buttons">Buttons</string>
     <string name="checkboxes">Checkboxes</string>
+    <string name="chips">Chips</string>
+    <string name="datepicker">Date picker</string>
+    <string name="dialog">Dialog</string>
+    <string name="progressbar">Progress bar</string>
+    <string name="radio">Radio buttons</string>
+    <string name="switch">Switch</string>
+    <string name="Timepicker">Timepicker</string>
     <string name="back">Back</string>
 </resources>

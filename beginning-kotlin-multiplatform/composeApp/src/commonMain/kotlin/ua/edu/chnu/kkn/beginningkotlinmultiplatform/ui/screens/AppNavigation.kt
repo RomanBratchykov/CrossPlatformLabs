@@ -29,11 +29,12 @@ import beginningkotlinmultiplatform.composeapp.generated.resources.*
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.Chips.ChipsScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.buttons.ButtonsScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.main.MainScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.checkboxes.CheckboxesScreen
 enum class AppScreen(val title: StringResource) {
-    Main(title = Res.string.main), Buttons(title = Res.string.buttons), Checkboxes(title = Res.string.checkboxes),
+    Main(title = Res.string.main), Buttons(title = Res.string.buttons), Checkboxes(title = Res.string.checkboxes), Chips(title = Res.string.chips)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,6 +95,7 @@ fun AppNavigation() {
                 MainScreen(
                     onButtonsClicked = {navController.navigate(AppScreen.Buttons.name)},
                     onCheckboxesClicked = {navController.navigate(AppScreen.Checkboxes.name)},
+                    onChipsClicked = {navController.navigate(AppScreen.Chips.name)},
                 )
             }
             composable(route = AppScreen.Buttons.name) {
@@ -111,6 +113,9 @@ fun AppNavigation() {
             }
             composable(route = AppScreen.Checkboxes.name) {
                 CheckboxesScreen()
+            }
+            composable(route = AppScreen.Chips.name) {
+                ChipsScreen()
             }
         }
     }

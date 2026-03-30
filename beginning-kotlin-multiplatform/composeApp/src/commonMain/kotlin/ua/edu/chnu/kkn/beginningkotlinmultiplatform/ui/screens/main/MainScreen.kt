@@ -14,9 +14,13 @@ import beginningkotlinmultiplatform.composeapp.generated.resources.Res
 import beginningkotlinmultiplatform.composeapp.generated.resources.buttons
 import org.jetbrains.compose.resources.stringResource
 import beginningkotlinmultiplatform.composeapp.generated.resources.checkboxes
+import beginningkotlinmultiplatform.composeapp.generated.resources.chips
+
 @Composable
 fun MainScreen(
     onButtonsClicked: () -> Unit,
+    onCheckboxesClicked: () -> Unit,
+    onChipsClicked: () -> Unit,
 ) {
 
     Column(
@@ -40,6 +44,14 @@ fun MainScreen(
         ) {
             Text(stringResource(Res.string.checkboxes))
         }
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onChipsClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.chips))
+        }
     }
 }
 
@@ -47,6 +59,8 @@ fun MainScreen(
 @Composable
 private fun MainScreenPreview() {
     MainScreen(
-        {},
-        ) {}
+        onButtonsClicked = {},
+        onCheckboxesClicked = {},
+        onChipsClicked = {},
+    )
 }
