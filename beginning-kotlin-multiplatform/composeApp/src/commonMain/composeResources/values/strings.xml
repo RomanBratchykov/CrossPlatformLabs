@@ -5,9 +5,10 @@
     <string name="chips">Chips</string>
     <string name="datepicker">Date picker</string>
     <string name="dialog">Dialog</string>
+    <string name="divider">Divider</string>
     <string name="progressbar">Progress bar</string>
     <string name="radio">Radio buttons</string>
     <string name="switch">Switch</string>
-    <string name="Timepicker">Timepicker</string>
+    <string name="timepicker">Timepicker</string>
     <string name="back">Back</string>
 </resources>

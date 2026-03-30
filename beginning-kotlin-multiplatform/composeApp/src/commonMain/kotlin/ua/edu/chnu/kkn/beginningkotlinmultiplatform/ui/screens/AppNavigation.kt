@@ -29,12 +29,29 @@ import beginningkotlinmultiplatform.composeapp.generated.resources.*
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
-import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.Chips.ChipsScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.chips.ChipsScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.buttons.ButtonsScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.main.MainScreen
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.checkboxes.CheckboxesScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.datepicker.DatepickerScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.dialog.DialogScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.divider.DividerScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.progress.ProgressScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.radio.RadioScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens._switch.SwitchScreen
+import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.screens.timepicker.TimepickerScreen
 enum class AppScreen(val title: StringResource) {
-    Main(title = Res.string.main), Buttons(title = Res.string.buttons), Checkboxes(title = Res.string.checkboxes), Chips(title = Res.string.chips)
+    Main(title = Res.string.main),
+    Buttons(title = Res.string.buttons),
+    Checkboxes(title = Res.string.checkboxes),
+    Chips(title = Res.string.chips),
+    Datepicker(title = Res.string.datepicker),
+    Radio(title = Res.string.radio),
+    Dialog(title = Res.string.dialog),
+    Divider(title = Res.string.divider),
+    Progress(title = Res.string.progressbar),
+    Switch(title = Res.string.switch),
+    Timepicker(title = Res.string.timepicker),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -96,6 +113,13 @@ fun AppNavigation() {
                     onButtonsClicked = {navController.navigate(AppScreen.Buttons.name)},
                     onCheckboxesClicked = {navController.navigate(AppScreen.Checkboxes.name)},
                     onChipsClicked = {navController.navigate(AppScreen.Chips.name)},
+                    onDatepickerClicked = {navController.navigate(AppScreen.Datepicker.name)},
+                    onDialogClicked = {navController.navigate(AppScreen.Dialog.name)},
+                    onDividerClicked = {navController.navigate(AppScreen.Divider.name)},
+                    onProgressClicked = {navController.navigate(AppScreen.Progress.name)},
+                    onRadioClicked = {navController.navigate(AppScreen.Radio.name)},
+                    onSwitchClicked = {navController.navigate(AppScreen.Switch.name)},
+                    onTimepickerClicked = {navController.navigate(AppScreen.Timepicker.name)},
                 )
             }
             composable(route = AppScreen.Buttons.name) {
@@ -116,6 +140,27 @@ fun AppNavigation() {
             }
             composable(route = AppScreen.Chips.name) {
                 ChipsScreen()
+            }
+            composable(route = AppScreen.Datepicker.name) {
+                DatepickerScreen()
+            }
+            composable(route = AppScreen.Dialog.name) {
+                DialogScreen()
+            }
+            composable(route = AppScreen.Divider.name) {
+                DividerScreen()
+            }
+            composable(route = AppScreen.Progress.name) {
+                ProgressScreen()
+            }
+            composable(route = AppScreen.Radio.name) {
+                RadioScreen()
+            }
+            composable(route = AppScreen.Switch.name) {
+                SwitchScreen()
+            }
+            composable(route = AppScreen.Timepicker.name) {
+                TimepickerScreen()
             }
         }
     }

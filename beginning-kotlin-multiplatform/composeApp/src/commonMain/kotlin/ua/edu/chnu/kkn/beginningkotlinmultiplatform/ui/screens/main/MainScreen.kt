@@ -15,12 +15,26 @@ import beginningkotlinmultiplatform.composeapp.generated.resources.buttons
 import org.jetbrains.compose.resources.stringResource
 import beginningkotlinmultiplatform.composeapp.generated.resources.checkboxes
 import beginningkotlinmultiplatform.composeapp.generated.resources.chips
+import beginningkotlinmultiplatform.composeapp.generated.resources.datepicker
+import beginningkotlinmultiplatform.composeapp.generated.resources.switch
+import beginningkotlinmultiplatform.composeapp.generated.resources.timepicker
+import beginningkotlinmultiplatform.composeapp.generated.resources.dialog
+import beginningkotlinmultiplatform.composeapp.generated.resources.divider
+import beginningkotlinmultiplatform.composeapp.generated.resources.progressbar
+import beginningkotlinmultiplatform.composeapp.generated.resources.radio
 
 @Composable
 fun MainScreen(
     onButtonsClicked: () -> Unit,
     onCheckboxesClicked: () -> Unit,
     onChipsClicked: () -> Unit,
+    onDatepickerClicked: () -> Unit,
+    onDialogClicked: () -> Unit,
+    onDividerClicked: () -> Unit,
+    onProgressClicked: () -> Unit,
+    onRadioClicked: () -> Unit,
+    onSwitchClicked: () -> Unit,
+    onTimepickerClicked: () -> Unit,
 ) {
 
     Column(
@@ -36,6 +50,7 @@ fun MainScreen(
         ) {
             Text(stringResource(Res.string.buttons))
         }
+
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
@@ -44,6 +59,7 @@ fun MainScreen(
         ) {
             Text(stringResource(Res.string.checkboxes))
         }
+
         Button(
             modifier = Modifier.fillMaxWidth(),
             onClick = {
@@ -52,6 +68,70 @@ fun MainScreen(
         ) {
             Text(stringResource(Res.string.chips))
         }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onDatepickerClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.datepicker))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onDialogClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.dialog))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onProgressClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.progressbar))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onDividerClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.divider))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onRadioClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.radio))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onSwitchClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.switch))
+        }
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onTimepickerClicked()
+            }
+        ) {
+            Text(stringResource(Res.string.timepicker))
+        }
+
     }
 }
 
@@ -62,5 +142,12 @@ private fun MainScreenPreview() {
         onButtonsClicked = {},
         onCheckboxesClicked = {},
         onChipsClicked = {},
+        onDatepickerClicked = {},
+        onDialogClicked = {},
+        onDividerClicked = {},
+        onProgressClicked = {},
+        onRadioClicked = {},
+        onSwitchClicked = {},
+        onTimepickerClicked = {},
     )
 }
