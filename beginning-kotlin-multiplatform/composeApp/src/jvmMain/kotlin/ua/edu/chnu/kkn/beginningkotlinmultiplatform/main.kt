@@ -18,6 +18,10 @@ import androidx.compose.ui.input.key.Key
 import beginningkotlinmultiplatform.composeapp.generated.resources.Res
 import beginningkotlinmultiplatform.composeapp.generated.resources.app_name
 import org.jetbrains.compose.resources.stringResource
+import beginningkotlinmultiplatform.composeapp.generated.resources.close
+import beginningkotlinmultiplatform.composeapp.generated.resources.exit
+import beginningkotlinmultiplatform.composeapp.generated.resources.file
+import beginningkotlinmultiplatform.composeapp.generated.resources.new
 import ua.edu.chnu.kkn.beginningkotlinmultiplatform.ui.shared_mobile.main.MainScreen
 
 data class WindowInfo(val windowName: String, val windowState: WindowState)
@@ -42,11 +46,11 @@ fun main() = application {
             title = windowList[i].windowName
         ) {
             MenuBar {
-                Menu("File", mnemonic = 'F') {
-                    val nextWindowState = rememberWindowState()
+                Menu(stringResource(Res.string.file), mnemonic = 'F') {
                     val windowsName = stringResource(Res.string.app_name, windowCount)
+                    val nextWindowState = rememberWindowState()
                     Item(
-                        "New", onClick = {
+                        stringResource(Res.string.new), onClick = {
                             windowCount++
                             windowList.add(
                                 WindowInfo(
@@ -58,13 +62,12 @@ fun main() = application {
                             Key.N, ctrl = true
                         )
                     )
-                    Item("Close", onClick = {
+                    Item(stringResource(Res.string.close), onClick = {
                         windowList.removeAt(i)
-
                     }, shortcut = KeyShortcut(Key.W, ctrl = true))
                     Separator()
                     Item(
-                        "Exit",
+                        stringResource(Res.string.exit),
                         onClick = { windowList.clear() },
                         shortcut = KeyShortcut(Key.Q, ctrl = true)
                     )
